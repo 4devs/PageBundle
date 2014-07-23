@@ -1,0 +1,12 @@
+form:
+    title: 'Заголовок:'
+    description: 'Описание:'
+    createdAt: 'Created At:'
+    updatedAt: 'Updated At:'
+    publish: 'Опубликовано:'
+    locale: 'Язык:'
+    locked: 'Заблокировано:'
+    keywords: 'Ключевые слова:'
+    metaDescription: 'Meta Описание:'
+    group_meta: 'Meta Информация'
+    group_general: 'Основное'

@@ -1,0 +1,12 @@
+form:
+    title: 'Title:'
+    description: 'Description:'
+    createdAt: 'Created At:'
+    updatedAt: 'Updated At:'
+    publish: 'Publish:'
+    locale: 'Locale:'
+    locked: 'Locked:'
+    keywords: 'Keywords:'
+    metaDescription: 'Meta Description:'
+    group_meta: 'Meta Info'
+    group_general: 'General'

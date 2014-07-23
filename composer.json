@@ -1,0 +1,29 @@
+{
+    "name": "fdevs/page-bundle",
+    "type": "symfony-bundle",
+    "description": "4devs PageBundle",
+    "keywords": ["Page management"],
+    "homepage": "http://4devs.io",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Andrey Samusev",
+            "email": "andrey_simfi@list.ru",
+            "homepage":"http://andrey.4devs.io"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.4",
+        "symfony/framework-bundle": "~2.1",
+        "symfony/form": "~2.1",
+        "lunetics/locale-bundle": "2.2.*@dev",
+        "egeloen/ckeditor-bundle": "2.*"
+    },
+    "require-dev": {},
+    "suggest": {},
+    "autoload": {
+        "psr-0": { "FDevs\\PageBundle": "" }
+    },
+    "target-dir": "FDevs/PageBundle"
+}
