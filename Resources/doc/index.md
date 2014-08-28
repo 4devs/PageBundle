@@ -48,6 +48,12 @@ public function registerBundles()
 }
 ```
 
+add config
+``` yml
+# app/config/config.yml
+f_devs_page:
+    allowed_locales: ['ru','en']
+```
 
 ### Step 3: Use the bundle
 

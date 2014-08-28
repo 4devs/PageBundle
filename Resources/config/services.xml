@@ -17,9 +17,7 @@
         </service>
 
         <service id="f_devs_page.service.choice_text" class="%f_devs_page.service.choice_text.class%">
-            <call method="setContainer">
-                <argument id="service_container" type="service"/>
-            </call>
+            <call method="setContainer"><argument id="service_container" type="service"/></call>
         </service>
     </services>
 

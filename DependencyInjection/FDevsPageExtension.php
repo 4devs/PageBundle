@@ -22,8 +22,9 @@ class FDevsPageExtension extends Extension
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
-        $container->setParameter($this->getAlias() . '.manager_name', null);
-        $container->setParameter($this->getAlias() . '.backend_type_mongodb', true);
+        $container->setParameter($this->getAlias() . '.allowed_locales', $config['allowed_locales']);
+        $container->setParameter($this->getAlias() . '.manager_name', $config['manager_name']);
+        $container->setParameter($this->getAlias() . '.backend_type_' . $config['db_driver'], true);
 
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('services.xml');

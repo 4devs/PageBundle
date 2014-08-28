@@ -22,7 +22,7 @@
 
         <service id="f_devs_page.form.type.translatable" class="%f_devs_page.form.type.translatable.class%">
             <tag name="form.type" alias="translatable"/>
-            <call method="setLocales"><argument>%allowed.locales%</argument></call>
+            <call method="setLocales"><argument>%f_devs_page.allowed_locales%</argument></call>
         </service>
 
         <service id="f_devs_page.form.type.locale_text" class="%f_devs_page.form.type.locale_text.class%">
@@ -33,13 +33,13 @@
         <service id="f_devs_page.form.type.locale_textarea" class="%f_devs_page.form.type.locale_text.class%">
             <tag name="form.type" alias="locale_textarea"/>
             <argument>textarea</argument>
-            <argument>%allowed.locales%</argument>
+            <argument>%f_devs_page.allowed_locales%</argument>
         </service>
 
         <service id="f_devs_page.form.type.locale_ckeditor" class="%f_devs_page.form.type.locale_text.class%">
             <tag name="form.type" alias="locale_ckeditor"/>
             <argument>ckeditor</argument>
-            <argument>%allowed.locales%</argument>
+            <argument>%f_devs_page.allowed_locales%</argument>
         </service>
 
     </services>
