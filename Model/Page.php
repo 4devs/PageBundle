@@ -37,7 +37,7 @@ abstract class Page implements MetaInterface, PageInterface
     public function __toString()
     {
         return $this->getTitle() instanceof Collection && $this->getTitle()->first(
-        ) instanceof LocaleText ? $this->getTitle()->first()->getText() : '';
+        ) instanceof LocaleText ? $this->getTitle()->first()->getText() : 'New Page';
     }
 
     /**

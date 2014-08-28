@@ -4,6 +4,7 @@ namespace FDevs\PageBundle\Service;
 
 use Doctrine\Common\Collections\Collection;
 use FDevs\PageBundle\Model\LocaleTextInterface;
+use MongoDBODMProxies\__CG__\FDevs\PageBundle\Model\LocaleText;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 class ChoiceText
@@ -98,11 +99,23 @@ class ChoiceText
             }
         );
         if (count($text)) {
-            $result = $text->first()->getText();
+            $result = self::getFirstText($text);
         }
 
         return $result;
 
+    }
+
+    public static function getFirstText($data)
+    {
+        $locale = ['text' => ''];
+        if ($data instanceof Collection) {
+            $locale = $data->first();
+        } elseif (is_array($data)) {
+            $locale = reset($data);
+        }
+
+        return $locale instanceof LocaleText ? $locale->getText() : (is_array($locale) ? $locale['text'] : '');
     }
 
     /**
@@ -124,7 +137,7 @@ class ChoiceText
             }
         );
         if (count($text)) {
-            $result = reset($text)->getText();
+            $result = self::getFirstText($text);
         }
 
         return $result;

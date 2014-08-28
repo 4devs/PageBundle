@@ -29,7 +29,9 @@ class TranslatableType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $resizeListener = new TranslatableFormSubscriber($options['type'], $options['options'], $this->locales);
+        $type = $options['type'];
+        $options = $this->prepareOptions($options['options'], $options);
+        $resizeListener = new TranslatableFormSubscriber($type, $options, $this->locales);
 
         $builder->addEventSubscriber($resizeListener);
     }
@@ -54,7 +56,16 @@ class TranslatableType extends AbstractType
                 array(
                     'type' => 'text',
                     'translation_domain' => 'FDevsPageBundle',
-                    'options' => array(),
+                    'options' => array(
+                        'trim' => true,
+                        'required' => true,
+                        'read_only' => false,
+                        'max_length' => null,
+                        'pattern' => null,
+                        'mapped' => true,
+                        'by_reference' => true,
+                        'label_attr' => array(),
+                    ),
                 )
             )
             ->addAllowedValues(array('type' => array('text', 'textarea', 'ckeditor')));
@@ -72,6 +83,16 @@ class TranslatableType extends AbstractType
         $this->locales = $locales;
 
         return $this;
+    }
+
+    private function prepareOptions($options, $replace)
+    {
+        $data = [];
+        foreach ($options as $key => $value) {
+            $data[$key] = empty($replace[$key]) ? $value : $replace[$key];
+        }
+
+        return $data;
     }
 
 }

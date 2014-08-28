@@ -112,7 +112,7 @@ class LocaleText implements LocaleTextInterface
      */
     public function __get($name)
     {
-        return (string)$name;
+        return (string) $name;
     }
 
 }
