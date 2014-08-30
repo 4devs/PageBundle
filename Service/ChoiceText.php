@@ -4,30 +4,15 @@ namespace FDevs\PageBundle\Service;
 
 use Doctrine\Common\Collections\Collection;
 use FDevs\PageBundle\Model\LocaleTextInterface;
-use MongoDBODMProxies\__CG__\FDevs\PageBundle\Model\LocaleText;
+use FDevs\PageBundle\Model\LocaleText;
+use Symfony\Component\DependencyInjection\ContainerAware;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
-class ChoiceText
+class ChoiceText extends ContainerAware
 {
 
     /** @var  string */
     private $locale;
-    /** @var ContainerInterface */
-    private $container;
-
-    /**
-     * set Container
-     *
-     * @param ContainerInterface $container
-     *
-     * @return $this
-     */
-    public function setContainer(ContainerInterface $container)
-    {
-        $this->container = $container;
-
-        return $this;
-    }
 
     /**
      * set Locale
