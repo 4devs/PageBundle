@@ -6,7 +6,6 @@ use Doctrine\Common\Collections\Collection;
 use FDevs\PageBundle\Model\LocaleTextInterface;
 use FDevs\PageBundle\Model\LocaleText;
 use Symfony\Component\DependencyInjection\ContainerAware;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 
 class ChoiceText extends ContainerAware
 {

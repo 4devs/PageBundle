@@ -8,8 +8,7 @@
         <parameter key="f_devs_page.event.translatable.class">FDevs\PageBundle\EventListener\TranslatableSubscriber</parameter>
         <parameter key="f_devs_page.twig.translator.class">FDevs\PageBundle\Twig\TranslatorExtension</parameter>
         <parameter key="f_devs_page.service.choice_text.class">FDevs\PageBundle\Service\ChoiceText</parameter>
-        <parameter key="f_devs_page.publish_time_period.listener.class">FDevs\PageBundle\EventListener\PublishTimePeriod</parameter>
-        <parameter key="f_devs_page.publishable.listener.class">FDevs\PageBundle\EventListener\Publishable</parameter>
+        <parameter key="f_devs_page.listener.mapping_autoloader.class">FDevs\PageBundle\EventListener\MappingAutoloader</parameter>
     </parameters>
 
     <services>
