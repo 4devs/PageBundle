@@ -45,7 +45,6 @@ class TranslatorExtension extends \Twig_Extension
     public function trans(\Twig_Environment $env, Collection $data, $locale = '')
     {
         $result = $this->choiceText->getTextByCollection($data, $locale);
-
         $twig = new \Twig_Environment(new \Twig_Loader_String());
         $twig->addExtension($env->getExtension('routing'));
 

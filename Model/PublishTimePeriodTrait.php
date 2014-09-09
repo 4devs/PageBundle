@@ -29,7 +29,7 @@ trait PublishTimePeriodTrait
      */
     public function setPublishEndDate(\DateTime $publishDate = null)
     {
-        $this->publishStartDate = $publishDate;
+        $this->publishEndDate = $publishDate;
 
         return $this;
     }

@@ -30,5 +30,6 @@ class FDevsPageExtension extends Extension
         $loader->load('services.xml');
         $loader->load('form.xml');
         $loader->load('admin-extension.xml');
+        $loader->load($config['db_driver'] . '.xml');
     }
 }
