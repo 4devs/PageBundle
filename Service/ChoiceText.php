@@ -52,14 +52,13 @@ class ChoiceText extends ContainerAware
      *
      * @return string
      */
-    public function getText($data, $locale = '')
+    public static function getText($data, $locale = '')
     {
         $result = '';
-        $locale = $this->getLocale($locale);
         if ($data instanceof Collection) {
-            $result = $this->getTextByCollection($data, $locale);
+            $result = self::getTextByCollection($data, $locale);
         } elseif (is_array($data)) {
-            $result = $this->getTextByArray($data, $locale);
+            $result = self::getTextByArray($data, $locale);
         }
 
         return $result;
@@ -73,10 +72,9 @@ class ChoiceText extends ContainerAware
      *
      * @return string
      */
-    public function getTextByCollection(Collection $data, $locale = '')
+    public static function getTextByCollection(Collection $data, $locale = '')
     {
         $result = '';
-        $locale = $this->getLocale($locale);
         $text = $data->filter(
             function (LocaleTextInterface $var) use ($locale) {
                 return $var->isLocale($locale);
@@ -90,6 +88,13 @@ class ChoiceText extends ContainerAware
 
     }
 
+    /**
+     * get First Text
+     *
+     * @param Collection|array $data
+     *
+     * @return string
+     */
     public static function getFirstText($data)
     {
         $locale = ['text' => ''];
@@ -110,10 +115,9 @@ class ChoiceText extends ContainerAware
      *
      * @return string
      */
-    public function getTextByArray(array $data, $locale = '')
+    public static function getTextByArray(array $data, $locale = '')
     {
         $result = '';
-        $locale = $this->getLocale($locale);
         $text = array_filter(
             $data,
             function (LocaleTextInterface $var) use ($locale) {

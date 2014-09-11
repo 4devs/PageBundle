@@ -6,14 +6,31 @@
 
     <services>
         <service id="f_devs_page.publish_time_period.listener" class="%f_devs_page.listener.mapping_autoloader.class%">
-            <argument>FDevs\PageBundle\Model\PublishTimePeriod</argument>
             <argument>Symfony\Cmf\Bundle\CoreBundle\PublishWorkflow\PublishTimePeriodInterface</argument>
+            <argument type="collection">
+                <argument type="collection">
+                    <argument type="string" key="name">publishEndDate</argument>
+                    <argument type="string" key="fieldName">publishEndDate</argument>
+                    <argument type="string" key="type">date</argument>
+                </argument>
+                <argument type="collection">
+                    <argument type="string" key="name">publishStartDate</argument>
+                    <argument type="string" key="fieldName">publishStartDate</argument>
+                    <argument type="string" key="type">date</argument>
+                </argument>
+            </argument>
             <tag name="doctrine_mongodb.odm.event_listener" event="loadClassMetadata" method="loadClassMetadata" />
         </service>
 
         <service id="f_devs_page.publishable.listener" class="%f_devs_page.listener.mapping_autoloader.class%">
-            <argument>FDevs\PageBundle\Model\Publishable</argument>
             <argument>Symfony\Cmf\Bundle\CoreBundle\PublishWorkflow\PublishableInterface</argument>
+            <argument type="collection">
+                <argument type="collection">
+                    <argument type="string" key="name">publishable</argument>
+                    <argument type="string" key="fieldName">publishable</argument>
+                    <argument type="string" key="type">boolean</argument>
+                </argument>
+            </argument>
             <tag name="doctrine_mongodb.odm.event_listener" event="loadClassMetadata" method="loadClassMetadata" />
         </service>
     </services>
