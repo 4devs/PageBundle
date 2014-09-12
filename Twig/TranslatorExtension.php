@@ -35,7 +35,7 @@ class TranslatorExtension extends \Twig_Extension
     }
 
     /**
-     * trnaslate Collection
+     * translate Collection
      *
      * @param Collection $data
      * @param string     $locale
@@ -44,6 +44,7 @@ class TranslatorExtension extends \Twig_Extension
      */
     public function trans(\Twig_Environment $env, Collection $data, $locale = '')
     {
+        $locale = $this->choiceText->getLocale($locale);
         $result = $this->choiceText->getTextByCollection($data, $locale);
         $twig = new \Twig_Environment(new \Twig_Loader_String());
         $twig->addExtension($env->getExtension('routing'));

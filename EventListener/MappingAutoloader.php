@@ -9,17 +9,17 @@ class MappingAutoloader
     /** @var string */
     private $interface = '';
     /** @var string */
-    private $classMetadata = '';
+    private $fields = [];
 
     /**
      * init
      *
-     * @param string $classMetadata
      * @param string $interface
+     * @param array  $fields
      */
-    public function __construct($classMetadata, $interface)
+    public function __construct($interface, array $fields)
     {
-        $this->classMetadata = $classMetadata;
+        $this->fields = $fields;
         $this->interface = $interface;
     }
 
@@ -34,15 +34,8 @@ class MappingAutoloader
         if (!in_array($this->interface, class_implements($classMetadata->getName()))) {
             return;
         }
-        $meta = $eventArgs->getObjectManager()->getClassMetadata($this->classMetadata);
-        $fields = $meta->getFieldNames();
-        foreach ($fields as $field) {
-            $fieldMapping = [
-                'fieldName' => $field,
-                'name' => $field,
-                'type' => $meta->getTypeOfField($field),
-            ];
-            $classMetadata->mapField($fieldMapping);
+        foreach ($this->fields as $field) {
+            $classMetadata->mapField($field);
         }
     }
 }

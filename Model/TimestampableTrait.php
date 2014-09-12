@@ -16,11 +16,14 @@ trait TimestampableTrait
 
     /**
      * update
+     *
      * @return $this
      */
     public function updateTime()
     {
-        $this->createdAt = new \DateTime();
+        if (!$this->createdAt) {
+            $this->createdAt = new \DateTime();
+        }
         $this->updatedAt = new \DateTime();
 
         return $this;
