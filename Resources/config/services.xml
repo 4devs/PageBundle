@@ -8,6 +8,7 @@
         <parameter key="f_devs_page.event.translatable.class">FDevs\PageBundle\EventListener\TranslatableSubscriber</parameter>
         <parameter key="f_devs_page.twig.translator.class">FDevs\PageBundle\Twig\TranslatorExtension</parameter>
         <parameter key="f_devs_page.service.choice_text.class">FDevs\PageBundle\Service\ChoiceText</parameter>
+        <parameter key="f_devs_page.service.page_manager.class">FDevs\PageBundle\Service\PageManager</parameter>
         <parameter key="f_devs_page.listener.mapping_autoloader.class">FDevs\PageBundle\EventListener\MappingAutoloader</parameter>
     </parameters>
 
@@ -18,7 +19,15 @@
         </service>
 
         <service id="f_devs_page.service.choice_text" class="%f_devs_page.service.choice_text.class%">
-            <call method="setContainer"><argument id="service_container" type="service"/></call>
+            <call method="setContainer">
+                <argument id="service_container" type="service"/>
+            </call>
+        </service>
+
+        <service id="f_devs_page.service.page_manager" class="%f_devs_page.service.page_manager.class%" abstract="true">
+            <call method="setManager">
+                <argument type="service" id="f_devs_page.model_manager"/>
+            </call>
         </service>
 
     </services>
