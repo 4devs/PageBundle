@@ -4,15 +4,14 @@ namespace FDevs\PageBundle\Model;
 
 trait MetaTrait
 {
-    /**
-     * @var LocaleText[]
-     */
+    /** @var LocaleText[] */
     protected $keywords;
 
-    /**
-     * @var LocaleText[]
-     */
+    /** @var LocaleText[] */
     protected $metaDescription;
+
+    /** @var LocaleText[] */
+    protected $metaAuthor;
 
     /**
      * @param LocaleText[] $keywords
@@ -54,4 +53,19 @@ trait MetaTrait
         return $this->metaDescription;
     }
 
+    /**
+     * @return LocaleText[]
+     */
+    public function getMetaAuthor()
+    {
+        return $this->metaAuthor;
+    }
+
+    /**
+     * @param LocaleText[] $author
+     */
+    public function setMetaAuthor(array $author)
+    {
+        $this->metaAuthor = $author;
+    }
 }

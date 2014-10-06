@@ -7,6 +7,7 @@
     <parameters>
         <parameter key="f_devs_page.event.translatable.class">FDevs\PageBundle\EventListener\TranslatableSubscriber</parameter>
         <parameter key="f_devs_page.twig.translator.class">FDevs\PageBundle\Twig\TranslatorExtension</parameter>
+        <parameter key="f_devs_page.twig.open_graph.class">FDevs\PageBundle\Twig\OpenGraphExtension</parameter>
         <parameter key="f_devs_page.service.choice_text.class">FDevs\PageBundle\Service\ChoiceText</parameter>
         <parameter key="f_devs_page.service.page_manager.class">FDevs\PageBundle\Service\PageManager</parameter>
         <parameter key="f_devs_page.listener.mapping_autoloader.class">FDevs\PageBundle\EventListener\MappingAutoloader</parameter>
@@ -15,6 +16,12 @@
     <services>
         <service id="f_devs_page.twig.translator_extension" class="%f_devs_page.twig.translator.class%">
             <argument type="service" id="f_devs_page.service.choice_text"/>
+            <tag name="twig.extension"/>
+        </service>
+
+        <service id="f_devs_page.twig.open_graph_extension" class="%f_devs_page.twig.open_graph.class%">
+            <call method="setPropertyList"><argument>%f_devs_page.open_graph.property%</argument></call>
+            <call method="setDefault"><argument>%f_devs_page.open_graph.default%</argument></call>
             <tag name="twig.extension"/>
         </service>
 

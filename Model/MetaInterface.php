@@ -1,34 +1,54 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: andrey
- * Date: 1/4/14
- * Time: 9:29 PM
- */
 
 namespace FDevs\PageBundle\Model;
 
 interface MetaInterface
 {
     /**
-     * @param  array $keywords
+     * set Keywords
+     *
+     * @param LocaleText[]|array $keywords
+     *
      * @return self
      */
     public function setKeywords(array $keywords);
 
     /**
-     * @return string
+     * get Keywords
+     *
+     * @return LocaleText[]
      */
     public function getKeywords();
 
     /**
-     * @param  array $metaDescription
+     * set Meta Description
+     *
+     * @param  LocaleText[]|array $metaDescription
+     *
      * @return self
      */
     public function setMetaDescription(array $metaDescription);
 
     /**
-     * @return string
+     * get Meta Description
+     *
+     * @return LocaleText
      */
     public function getMetaDescription();
+
+    /**
+     * get Author
+     *
+     * @return LocaleText
+     */
+    public function getMetaAuthor();
+
+    /**
+     * get Author
+     *
+     * @param LocaleText[]|array $author
+     *
+     * @return mixed
+     */
+    public function setMetaAuthor(array $author);
 }

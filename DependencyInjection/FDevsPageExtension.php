@@ -25,6 +25,14 @@ class FDevsPageExtension extends Extension
         $container->setParameter($this->getAlias() . '.allowed_locales', $config['allowed_locales']);
         $container->setParameter($this->getAlias() . '.manager_name', $config['manager_name']);
         $container->setParameter($this->getAlias() . '.backend_type_' . $config['db_driver'], true);
+        array_walk(
+            $config['open_graph']['property'],
+            function (&$val) {
+                $val = $val['fields'];
+            }
+        );
+        $container->setParameter($this->getAlias() . '.open_graph.property', $config['open_graph']['property']);
+        $container->setParameter($this->getAlias() . '.open_graph.default', $config['open_graph']['default']);
 
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('services.xml');
