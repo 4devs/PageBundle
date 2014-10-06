@@ -23,7 +23,7 @@ interface MetaInterface
     /**
      * set Meta Description
      *
-     * @param  LocaleText[]|array $metaDescription
+     * @param LocaleText[]|array $metaDescription
      *
      * @return self
      */

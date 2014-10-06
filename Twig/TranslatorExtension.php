@@ -38,7 +38,7 @@ class TranslatorExtension extends \Twig_Extension
      * translate Collection
      *
      * @param LocaleText[]|string $data
-     * @param string     $locale
+     * @param string              $locale
      *
      * @return string
      */

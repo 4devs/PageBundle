@@ -2,7 +2,6 @@
 
 namespace FDevs\PageBundle\Model;
 
-
 interface OpenGraphInterface extends MetaInterface, PageInterface
 {
     /**

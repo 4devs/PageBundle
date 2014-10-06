@@ -2,7 +2,6 @@
 
 namespace FDevs\PageBundle\Model;
 
-
 use Doctrine\Common\Util\Inflector;
 
 trait OpenGraphTrait
@@ -26,4 +25,4 @@ trait OpenGraphTrait
         return $data;
     }
 
-} 
+}
