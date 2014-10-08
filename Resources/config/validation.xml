@@ -5,12 +5,6 @@
         http://symfony.com/schema/dic/constraint-mapping/constraint-mapping-1.0.xsd">
 
     <class name="FDevs\PageBundle\Model\LocaleText">
-        <property name="text">
-            <constraint name="Type">
-                <option name="type">string</option>
-            </constraint>
-        </property>
-
         <property name="locale">
             <constraint name="Locale"/>
         </property>
