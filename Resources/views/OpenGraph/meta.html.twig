@@ -1,8 +1,12 @@
 {% spaceless %}
     {% for prefix, prop in fields %}
         {% for key, field in prop %}
-            {% if data.getDataByName(key) %}
-                <meta property="{{ prefix ~ ':' ~ field.name }}" content="{{ data.getDataByName(key)|t }}"/>
+            {% if data.getDataByName(key) and field.filters %}
+                <meta property="{{ prefix ~ ':' ~ field.name }}" content="{{ include(template_from_string('{{ data.getDataByName(key)|'~field.filters ~ '}}')) }}"/>
+            {% elseif data.getDataByName(key) and field.function %}
+                <meta property="{{ prefix ~ ':' ~ field.name }}" content="{{ include(template_from_string('{{ ' ~ field.function|format('data.getDataByName(key)') ~ ' }}')) }}"/>
+            {% elseif data.getDataByName(key) %}
+                <meta property="{{ prefix ~ ':' ~ field.name }}" content="{{ data.getDataByName(key) }}"/>
             {% elseif options[key] is defined %}
                 <meta property="{{ prefix ~ ':' ~ field.name }}" content="{{ options[key] }}"/>
             {% endif %}

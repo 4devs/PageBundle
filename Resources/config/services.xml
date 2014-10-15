@@ -20,7 +20,8 @@
         </service>
 
         <service id="f_devs_page.twig.open_graph_extension" class="%f_devs_page.twig.open_graph.class%">
-            <call method="setPropertyList"><argument>%f_devs_page.open_graph.property%</argument></call>
+            <call method="setPropertyNamespace"><argument>%f_devs_page.open_graph.property_namespace%</argument></call>
+            <call method="setPropertyFields"><argument>%f_devs_page.open_graph.property_fields%</argument></call>
             <call method="setDefault"><argument>%f_devs_page.open_graph.default%</argument></call>
             <tag name="twig.extension"/>
         </service>

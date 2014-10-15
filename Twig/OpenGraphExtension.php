@@ -10,7 +10,10 @@ class OpenGraphExtension extends \Twig_Extension
     private $default = ['author' => '@author'];
 
     /** @var array */
-    private $propertyList = [];
+    private $propertyFields = [];
+
+    /** @var array */
+    private $propertyNamespace = [];
 
     /**
      * {@inheritDoc}
@@ -31,24 +34,33 @@ class OpenGraphExtension extends \Twig_Extension
         ];
     }
 
-    public function ogPrefixFunction(OpenGraphInterface $og = null)
+    public function ogPrefixFunction($prefix = '')
     {
-        $type = '';
-        if ($og) {
-            $type = '/' . $og->getObjectType();
-            if (strpos($type, '.')) {
-                $type = strstr($type, '.', true);
+        $data = '';
+        if ($prefix && isset($this->propertyNamespace[$prefix])) {
+            $data = ' prefix="' . $prefix . ': ' . $this->propertyNamespace[$prefix] . '"';
+        } elseif (!$prefix && count($this->propertyNamespace)) {
+            $data = 'prefix="';
+            foreach ($this->propertyNamespace as $prefix => $namespace) {
+                $data .= $prefix . ': ' . $namespace . ' ';
             }
+            $data = ' ' . trim($data) . '"';
         }
 
-        return 'prefix="og: http://ogp.me/ns' . $type . '#"';
+
+        return $data;
     }
 
     public function ogFunction(\Twig_Environment $env, OpenGraphInterface $og, array $default = [])
     {
+//        $t = $env->getExtension('thumb');
+//        $env->getFilter('thumb');
+        $env->addExtension(new \Twig_Extension_StringLoader());
+//        $env->render()
+
         return $env->render(
             'FDevsPageBundle:OpenGraph:meta.html.twig',
-            ['data' => $og, 'fields' => $this->propertyList, 'options' => array_merge($this->default, $default)]
+            ['data' => $og, 'fields' => $this->propertyFields, 'options' => array_merge($this->default, $default)]
         );
     }
 
@@ -65,13 +77,25 @@ class OpenGraphExtension extends \Twig_Extension
     }
 
     /**
-     * @param array $propertyList
+     * @param array $propertyFields
      *
      * @return self
      */
-    public function setPropertyList($propertyList)
+    public function setPropertyFields($propertyFields)
     {
-        $this->propertyList = $propertyList;
+        $this->propertyFields = $propertyFields;
+
+        return $this;
+    }
+
+    /**
+     * @param array $propertyNamespace
+     *
+     * @return self
+     */
+    public function setPropertyNamespace($propertyNamespace)
+    {
+        $this->propertyNamespace = $propertyNamespace;
 
         return $this;
     }
