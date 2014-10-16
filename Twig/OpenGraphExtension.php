@@ -53,10 +53,12 @@ class OpenGraphExtension extends \Twig_Extension
 
     public function ogFunction(\Twig_Environment $env, OpenGraphInterface $og, array $default = [])
     {
-//        $t = $env->getExtension('thumb');
-//        $env->getFilter('thumb');
-        $env->addExtension(new \Twig_Extension_StringLoader());
-//        $env->render()
+        if (!$env->hasExtension('string_loader')) {
+            $ext = $env->getExtensions();
+            $ext['string_loader'] = new \Twig_Extension_StringLoader();
+            $env = new \Twig_Environment($env->getLoader());
+            $env->setExtensions($ext);
+        }
 
         return $env->render(
             'FDevsPageBundle:OpenGraph:meta.html.twig',
