@@ -2,6 +2,7 @@
 
 namespace FDevs\PageBundle\DependencyInjection;
 
+use FDevs\MetaPage\Model\MetaConfig;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
@@ -22,34 +23,53 @@ class FDevsPageExtension extends Extension
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
-        $container->setParameter($this->getAlias() . '.allowed_locales', $config['allowed_locales']);
-        $container->setParameter($this->getAlias() . '.manager_name', $config['manager_name']);
-        $container->setParameter($this->getAlias() . '.backend_type_' . $config['db_driver'], true);
+        $container->setParameter($this->getAlias().'.manager_name', $config['manager_name']);
+        $container->setParameter($this->getAlias().'.backend_type_'.$config['db_driver'], true);
+        $container->setParameter($this->getAlias().'.head.config', $config['head']);
 
-        $propertyFields = array_map(
-            function ($var) {
-                return $var['fields'];
-            },
-            $config['open_graph']['property']
-        );
-        $propertyNamespace = array_map(
-            function ($var) {
-                return empty($var['namespace']) ? null : $var['namespace'];
-            },
-            $config['open_graph']['property']
-        );
+        $this->prepareMetaConfig($container, $config['metas']);
 
-        $container->setParameter($this->getAlias() . '.open_graph.property_fields', $propertyFields);
-        $container->setParameter(
-            $this->getAlias() . '.open_graph.property_namespace',
-            array_filter($propertyNamespace)
-        );
-        $container->setParameter($this->getAlias() . '.open_graph.default', $config['open_graph']['default']);
-
-        $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
+        $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.xml');
         $loader->load('form.xml');
-        $loader->load('admin-extension.xml');
-        $loader->load($config['db_driver'] . '.xml');
+        $loader->load('twig_extensions.xml');
+
+        if ($config['admin_driver'] !== 'none') {
+            $loader->load(sprintf('admin/%s.xml', $config['admin_driver']));
+        }
+        if ($config['db_driver'] !== 'custom') {
+            $loader->load($config['db_driver'].'.xml');
+        }
+    }
+
+    /**
+     * prepare meta config
+     *
+     * @param ContainerBuilder $container
+     * @param array            $metaConfig
+     */
+    private function prepareMetaConfig(ContainerBuilder $container, $metaConfig)
+    {
+        $name = $this->getAlias().'.meta.%s';
+        $tag = $this->getAlias().'.meta.config';
+        $tagForm = $this->getAlias().'.meta.form';
+        foreach ($metaConfig as $key => $meta) {
+            $metaConfig = $container
+                ->register(sprintf($name, $key), 'FDevs\MetaPage\Model\MetaConfig')
+                ->addArgument($meta['type'])
+                ->addArgument($meta['name'])
+                ->addArgument($meta['content'])
+                ->addMethodCall('setRendered', [false])
+                ->addMethodCall('setFilters', [$meta['filters']])
+                ->addMethodCall('setFormType', [$meta['form_type']])
+                ->addMethodCall('setVariable', [$meta['variable']])
+                ->setPublic(false)
+                ->addTag($tag)
+                ->addTag($tag);
+
+            if ($meta['form_type'] && !$meta['variable']) {
+                $metaConfig->addTag($tagForm);
+            }
+        }
     }
 }

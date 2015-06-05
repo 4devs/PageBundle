@@ -13,9 +13,7 @@ class PageType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
-            ->add('title', 'translatable', array('label' => 'form.title', 'attr' => array('class' => 'span12')))
-            ->add('description', 'translatable', array('label' => 'form.description', 'type' => 'ckeditor'));
+        $builder->add('title', 'trans_text', ['label' => 'form.title']);
     }
 
     /**
@@ -23,7 +21,7 @@ class PageType extends AbstractType
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        $resolver->setDefaults(array('inherit_data' => true, 'translation_domain' => 'FDevsPageBundle'));
+        $resolver->setDefaults(['inherit_data' => true, 'translation_domain' => 'FDevsPageBundle']);
     }
 
     /**
@@ -33,5 +31,4 @@ class PageType extends AbstractType
     {
         return 'f_devs_page';
     }
-
 }

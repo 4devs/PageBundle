@@ -2,6 +2,9 @@
 
 namespace FDevs\PageBundle\Model;
 
+use Doctrine\Common\Collections\Collection;
+use FDevs\Locale\Model\LocaleText;
+
 trait PageTrait
 {
     /**
@@ -10,36 +13,11 @@ trait PageTrait
     protected $title;
 
     /**
-     * @var LocaleText[]
-     */
-    protected $description;
-
-    /**
-     * @param LocaleText[] $description
+     * @param array|Collection|LocaleText[] $title
      *
      * @return $this
      */
-    public function setDescription(array $description)
-    {
-        $this->description = $description;
-
-        return $this;
-    }
-
-    /**
-     * @return LocaleText[]
-     */
-    public function getDescription()
-    {
-        return $this->description;
-    }
-
-    /**
-     * @param LocaleText[] $title
-     *
-     * @return $this
-     */
-    public function setTitle(array $title)
+    public function setTitle($title)
     {
         $this->title = $title;
 
@@ -47,11 +25,10 @@ trait PageTrait
     }
 
     /**
-     * @return LocaleText[]
+     * @return array|Collection|LocaleText[]
      */
     public function getTitle()
     {
         return $this->title;
     }
-
 }
