@@ -1,29 +1,37 @@
 {
     "name": "fdevs/page-bundle",
     "type": "symfony-bundle",
-    "description": "4devs PageBundle",
-    "keywords": ["Page management"],
+    "description": "It is the basis for the creation of html pages",
+    "keywords": [
+        "page",
+        "html"
+    ],
     "homepage": "http://4devs.io",
     "license": "MIT",
     "authors": [
         {
             "name": "Andrey Samusev",
-            "email": "andrey_simfi@list.ru",
-            "homepage":"http://andrey.4devs.io"
+            "email": "andrey@4devs.org",
+            "homepage": "http://andrey.4devs.io"
+        },
+        {
+            "name": "4devs Community",
+            "homepage": "https://github.com/4devs/PageBundle/contributors"
         }
     ],
-    "minimum-stability": "dev",
     "require": {
         "php": ">=5.4",
-        "symfony/framework-bundle": "~2.1",
-        "symfony/form": "~2.1",
-        "lunetics/locale-bundle": "~2.2",
-        "egeloen/ckeditor-bundle": "2.*"
+        "symfony/framework-bundle": "~2.6",
+        "fdevs/locale-bundle": "~2.0",
+        "fdevs/meta-page": "~1.0"
     },
     "require-dev": {},
-    "suggest": {},
-    "autoload": {
-        "psr-0": { "FDevs\\PageBundle": "" }
+    "suggest": {
+        "egeloen/ckeditor-bundle": "For using ckeditor",
+        "symfony/form": "For using forms",
+        "symfony-cmf/core-bundle": "For using core symfony cmf"
     },
-    "target-dir": "FDevs/PageBundle"
+    "autoload": {
+        "psr-4": {"FDevs\\PageBundle\\": ""}
+    }
 }

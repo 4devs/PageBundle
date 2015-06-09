@@ -5,9 +5,8 @@
 
     <parameters>
         <parameter key="f_devs_page.form.type.page.class">FDevs\PageBundle\Form\Type\PageType</parameter>
-        <parameter key="f_devs_page.form.type.meta.class">FDevs\PageBundle\Form\Type\MetaType</parameter>
-        <parameter key="f_devs_page.form.type.locale_text.class">FDevs\PageBundle\Form\Type\LocaleTextType</parameter>
-        <parameter key="f_devs_page.form.type.translatable.class">FDevs\PageBundle\Form\Type\TranslatableType</parameter>
+        <parameter key="f_devs_page.form.type.meta.class">FDevs\MetaPage\Form\Type\MetaType</parameter>
+        <parameter key="f_devs_page.form.type.meta_data.class">FDevs\MetaPage\Form\Type\MetaDataType</parameter>
     </parameters>
 
     <services>
@@ -17,29 +16,11 @@
         </service>
 
         <service id="f_devs_page.form.type.meta" class="%f_devs_page.form.type.meta.class%">
-          <tag name="form.type" alias="f_devs_meta" />
+          <tag name="form.type" alias="fdevs_meta" />
         </service>
 
-        <service id="f_devs_page.form.type.translatable" class="%f_devs_page.form.type.translatable.class%">
-            <tag name="form.type" alias="translatable"/>
-            <call method="setLocales"><argument>%f_devs_page.allowed_locales%</argument></call>
-        </service>
-
-        <service id="f_devs_page.form.type.locale_text" class="%f_devs_page.form.type.locale_text.class%">
-            <tag name="form.type" alias="locale_text"/>
-            <argument>text</argument>
-        </service>
-
-        <service id="f_devs_page.form.type.locale_textarea" class="%f_devs_page.form.type.locale_text.class%">
-            <tag name="form.type" alias="locale_textarea"/>
-            <argument>textarea</argument>
-            <argument>%f_devs_page.allowed_locales%</argument>
-        </service>
-
-        <service id="f_devs_page.form.type.locale_ckeditor" class="%f_devs_page.form.type.locale_text.class%">
-            <tag name="form.type" alias="locale_ckeditor"/>
-            <argument>ckeditor</argument>
-            <argument>%f_devs_page.allowed_locales%</argument>
+        <service id="f_devs_page.form.type.meta_data" class="%f_devs_page.form.type.meta_data.class%">
+          <tag name="form.type" alias="fdevs_meta_data" />
         </service>
 
     </services>

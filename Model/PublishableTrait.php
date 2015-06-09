@@ -26,5 +26,4 @@ trait PublishableTrait
 
         return $this;
     }
-
 }

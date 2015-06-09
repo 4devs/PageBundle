@@ -2,31 +2,22 @@
 
 namespace FDevs\PageBundle\Model;
 
+use FDevs\Locale\Model\LocaleText;
+use Doctrine\Common\Collections\Collection;
+
 interface PageInterface
 {
     /**
-     * @param LocaleText[] $description
+     * @param array|Collection|LocaleText[] $title
      *
      * @return self
      */
-    public function setDescription(array $description);
-
-    /**
-     * @return \Doctrine\Common\Collections\ArrayCollection
-     */
-    public function getDescription();
-
-    /**
-     * @param LocaleText[] $title
-     *
-     * @return self
-     */
-    public function setTitle(array $title);
+    public function setTitle($title);
 
     /**
      * get Title
      *
-     * @return \Doctrine\Common\Collections\ArrayCollection
+     * @return array|Collection|LocaleText[]
      */
     public function getTitle();
 }

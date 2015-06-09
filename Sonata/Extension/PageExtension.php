@@ -27,5 +27,4 @@ class PageExtension extends AdminExtension
     {
         $listMapper->addIdentifier('title');
     }
-
 }

@@ -49,5 +49,4 @@ trait PublishTimePeriodTrait
     {
         return $this->publishEndDate;
     }
-
 }

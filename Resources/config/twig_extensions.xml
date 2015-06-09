@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="f_devs_page.twig_extension.meta.class">FDevs\MetaPage\Twig\MetaExtension</parameter>
+        <parameter key="f_devs_page.twig_extension.head.class">FDevs\MetaPage\Twig\HeadExtension</parameter>
+    </parameters>
+
+    <services>
+        <service id="f_devs_page.twig_extension.meta" class="%f_devs_page.twig_extension.meta.class%" public="false">
+            <argument type="collection"/>
+            <tag name="twig.extension"/>
+        </service>
+
+        <service id="f_devs_page.twig_extension.head" class="%f_devs_page.twig_extension.head.class%" public="false">
+            <argument>%f_devs_page.head.config%</argument>
+            <tag name="twig.extension"/>
+        </service>
+
+    </services>
+
+</container>

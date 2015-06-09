@@ -13,9 +13,8 @@ class MetaExtension extends AdminExtension
     public function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->with('form.group_meta', array('translation_domain' => 'FDevsPageBundle'))
-                ->add('meta', 'f_devs_meta', array('required' => false, 'label' => false))
+            ->with('form.group_meta', ['translation_domain' => 'FDevsPageBundle'])
+                ->add('meta_data', 'fdevs_meta', ['required' => false, 'label' => false])
             ->end();
     }
-
 }

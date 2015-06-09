@@ -7,15 +7,10 @@
     <mapped-superclass name="FDevs\PageBundle\Model\Page">
 
         <field name="createdAt" fieldName="createdAt" type="date" />
-
         <field name="updatedAt" fieldName="updatedAt" type="date" />
 
-        <field name="templateName" fieldName="templateName" type="string" />
-
-        <embed-many target-document="FDevs\PageBundle\Model\LocaleText" field="title" fieldName="title"/>
-        <embed-many target-document="FDevs\PageBundle\Model\LocaleText" field="description" fieldName="description"/>
-        <embed-many target-document="FDevs\PageBundle\Model\LocaleText" field="keywords" fieldName="keywords"/>
-        <embed-many target-document="FDevs\PageBundle\Model\LocaleText" field="metaDescription" fieldName="metaDescription"/>
+        <embed-many target-document="FDevs\Locale\Model\LocaleText" field="title" fieldName="title"/>
+        <embed-many target-document="FDevs\MetaPage\Model\MetaData" field="metaData" fieldName="metaData"/>
 
         <lifecycle-callbacks>
             <lifecycle-callback type="preUpdate" method="preUpdate"/>
