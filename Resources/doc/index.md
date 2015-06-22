@@ -14,20 +14,10 @@ Installation and usage is a quick:
 
 ### Step 1: Download PageBundle using composer
 
-Add PageBundle in your composer.json:
-
-```js
-{
-    "require": {
-        "fdevs/page-bundle": "*"
-    }
-}
-```
-
-Now tell composer to download the bundle by running the command:
+Tell composer to download the bundle by running the command:
 
 ``` bash
-$ php composer.phar update fdevs/page-bundle
+$ php composer.phar require fdevs/page-bundle
 ```
 
 Composer will install the bundle to your project's `vendor/fdevs` directory.
