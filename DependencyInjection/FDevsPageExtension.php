@@ -52,7 +52,6 @@ class FDevsPageExtension extends Extension
     {
         $name = $this->getAlias().'.meta.%s';
         $tag = $this->getAlias().'.meta.config';
-        $tagForm = $this->getAlias().'.meta.form';
         foreach ($metaConfig as $key => $meta) {
             $metaConfig = $container
                 ->register(sprintf($name, $key), 'FDevs\MetaPage\Model\MetaConfig')
@@ -68,7 +67,7 @@ class FDevsPageExtension extends Extension
             ;
 
             if ($meta['form_type'] && !$meta['variable']) {
-                $metaConfig->addTag($tagForm);
+                $metaConfig->addMethodCall('setFormType', [$meta['form_type']]);
             }
         }
     }

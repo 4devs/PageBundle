@@ -18,7 +18,6 @@ class FDevsPageBundle extends Bundle
         parent::build($container);
         $this->addRegisterMappingsPass($container);
         $container->addCompilerPass(new MetaConfigPass());
-        $container->addCompilerPass(new MetaFormPass());
     }
 
     /**
