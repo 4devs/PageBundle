@@ -2,6 +2,7 @@
 
 namespace FDevs\PageBundle\DependencyInjection;
 
+use FDevs\MetaPage\Model\MetaConfigInterface;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
@@ -42,7 +43,12 @@ class Configuration implements ConfigurationInterface
                             ->children()
                                 ->enumNode('type')->values($metaType)->end()
                                 ->scalarNode('name')->isRequired()->end()
-                                ->scalarNode('content')->isRequired()->end()
+                                ->scalarNode('content')->defaultValue(null)->end()
+                                ->enumNode('content_type')
+                                    ->values([MetaConfigInterface::CONTENT_TYPE_STRING, MetaConfigInterface::CONTENT_TYPE_ARRAY])
+                                    ->defaultValue(MetaConfigInterface::CONTENT_TYPE_STRING)
+                                    ->cannotBeEmpty()
+                                ->end()
                                 ->scalarNode('variable')->defaultValue('')->end()
                                 ->scalarNode('filters')->defaultValue('')->end()
                                 ->scalarNode('form_type')->defaultValue('')->end()

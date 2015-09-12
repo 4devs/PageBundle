@@ -61,11 +61,11 @@ class FDevsPageExtension extends Extension
                 ->addArgument($meta['content'])
                 ->addMethodCall('setRendered', [false])
                 ->addMethodCall('setFilters', [$meta['filters']])
-                ->addMethodCall('setFormType', [$meta['form_type']])
+                ->addMethodCall('setContentType', [$meta['content_type']])
                 ->addMethodCall('setVariable', [$meta['variable']])
                 ->setPublic(false)
-                ->addTag($tag)
-                ->addTag($tag);
+                ->addTag($tag, ['name' => $key])
+            ;
 
             if ($meta['form_type'] && !$meta['variable']) {
                 $metaConfig->addTag($tagForm);
