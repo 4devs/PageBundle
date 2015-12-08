@@ -8,7 +8,7 @@ use Sonata\AdminBundle\Form\FormMapper;
 class MetaExtension extends AdminExtension
 {
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function configureFormFields(FormMapper $formMapper)
     {

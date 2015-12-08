@@ -12,7 +12,7 @@ class MappingAutoloader
     private $fields = [];
 
     /**
-     * init
+     * init.
      *
      * @param string $interface
      * @param array  $fields
@@ -24,7 +24,7 @@ class MappingAutoloader
     }
 
     /**
-     * add field by Interface
+     * add field by Interface.
      *
      * @param LoadClassMetadataEventArgs $eventArgs
      */

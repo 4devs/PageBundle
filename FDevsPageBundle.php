@@ -11,7 +11,7 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
 class FDevsPageBundle extends Bundle
 {
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function build(ContainerBuilder $container)
     {
@@ -28,7 +28,7 @@ class FDevsPageBundle extends Bundle
         $meta = new \ReflectionClass('FDevs\MetaPage\MetaInterface');
 
         $mappings = [
-            realpath(__DIR__.'/Resources/config/doctrine/model')                       => 'FDevs\PageBundle\Model',
+            realpath(__DIR__.'/Resources/config/doctrine/model') => 'FDevs\PageBundle\Model',
             realpath(dirname($meta->getFileName()).'/Resources/config/doctrine/model') => 'FDevs\MetaPage\Model',
         ];
 

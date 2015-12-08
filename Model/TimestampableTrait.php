@@ -15,7 +15,7 @@ trait TimestampableTrait
     protected $updatedAt;
 
     /**
-     * update
+     * update.
      *
      * @return $this
      */

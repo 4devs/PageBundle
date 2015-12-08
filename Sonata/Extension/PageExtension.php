@@ -9,7 +9,7 @@ use Sonata\AdminBundle\Form\FormMapper;
 class PageExtension extends AdminExtension
 {
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function configureFormFields(FormMapper $formMapper)
     {
@@ -21,7 +21,7 @@ class PageExtension extends AdminExtension
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function configureListFields(ListMapper $listMapper)
     {
