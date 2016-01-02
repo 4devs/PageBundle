@@ -6,6 +6,9 @@
 
     <parameters>
         <parameter key="f_devs_page.service.page_manager.class">FDevs\PageBundle\Service\PageManager</parameter>
+        <parameter key="f_devs_page.meta.manager.class">FDevs\MetaPage\Manager\MetaManager</parameter>
+        <parameter key="f_devs_page.meta.registry.class">FDevs\MetaPage\Manager\MetaRegistry</parameter>
+        <parameter key="f_devs_page.model.meta_config.class">FDevs\MetaPage\Model\MetaConfig</parameter>
         <parameter key="f_devs_page.listener.mapping_autoloader.class">FDevs\PageBundle\EventListener\MappingAutoloader</parameter>
     </parameters>
 
@@ -15,6 +18,15 @@
             <call method="setManager">
                 <argument type="service" id="f_devs_page.model_manager"/>
             </call>
+        </service>
+
+        <service id="f_devs_page.meta.manager" class="%f_devs_page.meta.manager.class%">
+            <argument>%f_devs_page.model.meta_config.class%</argument>
+            <argument type="service" id="event_dispatcher"/>
+        </service>
+
+        <service id="f_devs_page.meta.registry" class="%f_devs_page.meta.registry.class%">
+            <argument type="service" id="f_devs_page.meta.manager"/>
         </service>
 
     </services>

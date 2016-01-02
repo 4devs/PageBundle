@@ -11,7 +11,7 @@
 
     <services>
         <service id="f_devs_page.twig_extension.meta" class="%f_devs_page.twig_extension.meta.class%" public="false">
-            <argument type="collection"/>
+            <argument type="service" id="f_devs_page.meta.registry"/>
             <tag name="twig.extension"/>
         </service>
 

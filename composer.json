@@ -23,7 +23,7 @@
         "php": ">=5.4",
         "symfony/framework-bundle": "~2.6",
         "fdevs/locale-bundle": "~2.0",
-        "fdevs/meta-page": "~1.0"
+        "fdevs/meta-page": "~1.1"
     },
     "require-dev": {},
     "suggest": {
