@@ -15,7 +15,7 @@ interface PageInterface
     public function setTitle($title);
 
     /**
-     * get Title
+     * get Title.
      *
      * @return array|Collection|LocaleText[]
      */

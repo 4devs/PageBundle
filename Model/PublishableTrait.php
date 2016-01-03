@@ -5,12 +5,12 @@ namespace FDevs\PageBundle\Model;
 trait PublishableTrait
 {
     /**
-     * @var boolean
+     * @var bool
      */
     protected $publishable;
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function isPublishable()
     {
@@ -18,7 +18,7 @@ trait PublishableTrait
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function setPublishable($publishable)
     {

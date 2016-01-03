@@ -15,7 +15,7 @@ trait PublishTimePeriodTrait
     protected $publishEndDate;
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function setPublishStartDate(\DateTime $publishDate = null)
     {
@@ -25,7 +25,7 @@ trait PublishTimePeriodTrait
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function setPublishEndDate(\DateTime $publishDate = null)
     {
@@ -35,7 +35,7 @@ trait PublishTimePeriodTrait
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getPublishStartDate()
     {
@@ -43,7 +43,7 @@ trait PublishTimePeriodTrait
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getPublishEndDate()
     {

@@ -14,7 +14,7 @@ abstract class PageManager
     private $class;
 
     /**
-     * init
+     * init.
      *
      * @param string $class
      */
@@ -24,7 +24,7 @@ abstract class PageManager
     }
 
     /**
-     * set Manager
+     * set Manager.
      *
      * @param ObjectManager $manager
      *
@@ -38,7 +38,7 @@ abstract class PageManager
     }
 
     /**
-     * persist page
+     * persist page.
      *
      * @param Page $page
      *
@@ -52,7 +52,7 @@ abstract class PageManager
     }
 
     /**
-     * remove page
+     * remove page.
      *
      * @param Page $page
      *
@@ -66,7 +66,7 @@ abstract class PageManager
     }
 
     /**
-     * get Class
+     * get Class.
      *
      * @return string
      */
@@ -76,7 +76,7 @@ abstract class PageManager
     }
 
     /**
-     * create Static Page
+     * create Static Page.
      *
      * @return Page
      */
@@ -89,7 +89,7 @@ abstract class PageManager
     }
 
     /**
-     * find One By criteria
+     * find One By criteria.
      *
      * @param array $criteria
      *

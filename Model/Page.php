@@ -13,7 +13,7 @@ abstract class Page implements MetaInterface, PageInterface
     use TimestampableTrait;
 
     /**
-     * init
+     * init.
      */
     public function __construct()
     {
@@ -21,7 +21,7 @@ abstract class Page implements MetaInterface, PageInterface
     }
 
     /**
-     * get Name
+     * get Name.
      *
      * @return string
      */
@@ -31,7 +31,7 @@ abstract class Page implements MetaInterface, PageInterface
     }
 
     /**
-     * preUpdate
+     * preUpdate.
      *
      * @return $this
      */
