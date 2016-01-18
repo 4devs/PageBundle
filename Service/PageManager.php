@@ -97,6 +97,35 @@ abstract class PageManager
      */
     public function findOneBy(array $criteria)
     {
-        return $this->manager->getRepository($this->class)->findOneBy($criteria);
+        return $this->getRepository()->findOneBy($criteria);
+    }
+
+    /**
+     * @param array      $criteria
+     * @param array|null $orderBy
+     * @param int|null   $limit
+     * @param int|null   $offset
+     *
+     * @return array
+     */
+    public function findBy(array $criteria = [], array $orderBy = null, $limit = null, $offset = null)
+    {
+        return $this->getRepository()->findBy($criteria, $orderBy, $limit, $offset);
+    }
+
+    /**
+     * @return ObjectManager
+     */
+    protected function getManager()
+    {
+        return $this->manager;
+    }
+
+    /**
+     * @return \Doctrine\Common\Persistence\ObjectRepository
+     */
+    protected function getRepository()
+    {
+        return $this->manager->getRepository($this->class);
     }
 }
