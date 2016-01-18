@@ -4,7 +4,6 @@ namespace FDevs\PageBundle;
 
 use Doctrine\Bundle\MongoDBBundle\DependencyInjection\Compiler\DoctrineMongoDBMappingsPass;
 use FDevs\PageBundle\DependencyInjection\Compiler\MetaConfigPass;
-use FDevs\PageBundle\DependencyInjection\Compiler\MetaFormPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
