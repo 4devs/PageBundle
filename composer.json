@@ -11,7 +11,7 @@
     "authors": [
         {
             "name": "Andrey Samusev",
-            "email": "andrey@4devs.org",
+            "email": "andrey@4devs.pro",
             "homepage": "http://andrey.4devs.io"
         },
         {
@@ -24,7 +24,12 @@
         "fdevs/locale-bundle": "~2.0",
         "fdevs/meta-page": "~1.1"
     },
-    "require-dev": {},
+    "require-dev": {
+        "symfony/config": "~2.8|~3.0",
+        "symfony/form": "~2.8|~3.0",
+        "sonata-project/admin-bundle": "~2.3",
+        "symfony/dependency-injection": "~2.8|~3.0"
+    },
     "suggest": {
         "egeloen/ckeditor-bundle": "For using ckeditor",
         "symfony/form": "For using forms",
