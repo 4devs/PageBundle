@@ -4,25 +4,16 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <parameters>
-        <parameter key="f_devs_page.form.type.page.class">FDevs\PageBundle\Form\Type\PageType</parameter>
         <parameter key="f_devs_page.form.type.meta.class">FDevs\MetaPage\Form\Type\MetaType</parameter>
-        <parameter key="f_devs_page.form.type.meta_data.class">FDevs\MetaPage\Form\Type\MetaDataType</parameter>
     </parameters>
 
     <services>
 
-        <service id="f_devs_page.form.type.page" class="%f_devs_page.form.type.page.class%">
-            <tag name="form.type" alias="f_devs_page" />
-        </service>
-
         <service id="f_devs_page.form.type.meta" class="%f_devs_page.form.type.meta.class%">
             <argument type="service" id="f_devs_page.meta.registry"/>
-            <tag name="form.type" alias="fdevs_meta" />
-        </service>
-
-        <service id="f_devs_page.form.type.meta_data" class="%f_devs_page.form.type.meta_data.class%">
-            <tag name="form.type" alias="fdevs_meta_data" />
+            <tag name="form.type"/>
         </service>
 
     </services>
+
 </container>

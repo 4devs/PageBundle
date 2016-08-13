@@ -2,10 +2,10 @@
 
 namespace FDevs\PageBundle\Form\Type;
 
+use FDevs\Locale\Form\Type\TransTextType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class PageType extends AbstractType
 {
@@ -14,15 +14,7 @@ class PageType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('title', 'trans_text', ['label' => 'form.title']);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
-    {
-        $resolver->setDefaults(['inherit_data' => true, 'translation_domain' => 'FDevsPageBundle']);
+        $builder->add('title', TransTextType::class, ['label' => 'form.title']);
     }
 
     /**
@@ -31,13 +23,5 @@ class PageType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(['inherit_data' => true, 'translation_domain' => 'FDevsPageBundle']);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getName()
-    {
-        return 'f_devs_page';
     }
 }
