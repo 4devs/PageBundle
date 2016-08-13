@@ -2,10 +2,11 @@
 
 namespace FDevs\PageBundle\Sonata\Extension;
 
-use Sonata\AdminBundle\Admin\AdminExtension;
+use FDevs\MetaPage\Form\Type\MetaType;
+use Sonata\AdminBundle\Admin\AbstractAdminExtension;
 use Sonata\AdminBundle\Form\FormMapper;
 
-class MetaExtension extends AdminExtension
+class MetaExtension extends AbstractAdminExtension
 {
     /**
      * {@inheritdoc}
@@ -14,7 +15,7 @@ class MetaExtension extends AdminExtension
     {
         $formMapper
             ->with('form.group_meta', ['translation_domain' => 'FDevsPageBundle'])
-                ->add('meta_data', 'fdevs_meta', ['required' => false, 'label' => false])
+                ->add('meta_data', MetaType::class, ['required' => false, 'label' => false])
             ->end();
     }
 }

@@ -2,11 +2,12 @@
 
 namespace FDevs\PageBundle\Sonata\Extension;
 
-use Sonata\AdminBundle\Admin\AdminExtension;
+use FDevs\PageBundle\Form\Type\PageType;
+use Sonata\AdminBundle\Admin\AbstractAdminExtension;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 
-class PageExtension extends AdminExtension
+class PageExtension extends AbstractAdminExtension
 {
     /**
      * {@inheritdoc}
@@ -15,7 +16,7 @@ class PageExtension extends AdminExtension
     {
         $formMapper
             ->with('form.group_general', array('translation_domain' => 'FDevsPageBundle'))
-                ->add('page', 'f_devs_page', array('required' => true, 'label' => false))
+                ->add('page', PageType::class, array('required' => true, 'label' => false))
             ->end()
         ;
     }
